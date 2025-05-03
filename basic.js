@@ -200,3 +200,105 @@ switch (color) {
     console.log('color is NOT red or blue');
     break;
 }
+
+//function
+function addNums(num1 = 1, num2 = 1) {
+    // console.log(num1 + num2);
+    return num1 + num2;
+  }
+  console.log(addNums(5, 4));
+  
+  //array function
+  // const addNum = (num1 = 1, num2 = 1) => num1 + num2;
+  const addNum = num3 => num3 + 5;
+  
+  console.log(addNum(5));
+
+  //constructive function
+function Person(firstName, lastName, dob) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.dob = new Date(dob);
+    // this.getBirthYear = function(){
+    //     return this.dob.getFullYear();
+    // }
+    // this.getFullName = function(){
+    //     return `${this.firstName} ${this.lastName}`;
+    // }
+  }
+  Person.prototype.getBirthYear = function () {
+    return this.dob.getFullYear();
+  };
+  Person.prototype.getFullName = function () {
+    return `${this.firstName} ${this.lastName}`;
+  };
+  
+  //Instantiate object
+  const person1 = new Person("Rojifa", "Akhter", "2-1-1999");
+  const person2 = new Person("Nirjona", "Sharker", "1-1-2001");
+  
+  console.log(person2.getBirthYear());
+  console.log(person2.getFullName());
+  console.log(person1);
+  
+  
+//class
+class Person {
+    constructor(firstName, lastName, dob) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.dob = new Date(dob);
+    }
+    getBirthYear() {
+      return this.dob.getFullYear();
+    }
+    getFullName() {
+      return `${this.firstName} ${this.lastName}`;
+    }
+  }
+  //Instantiate object
+  const person3 = new Person("Rojifa", "Akhter", "2-1-1999");
+  const person4 = new Person("Nirjona", "Sharker", "1-1-2001");
+  
+  console.log(person3.getBirthYear());
+  console.log(person3.getFullName());
+  console.log(person4);
+
+  // console.log(window)
+
+// alert(1);
+//single element selector
+console.log(document.getElementById('my-form'));
+console.log(document.querySelector('h1'));
+
+//multiple element selector
+
+console.log(document.querySelectorAll('.item'));
+console.log(document.getElementsByClassName('item'));
+console.log(document.getElementsByTagName('li'));
+
+const items = document.querySelectorAll('.item');
+
+items.forEach((item) => console.log(item));
+
+const ul = document.querySelector('.items');
+
+// ul.remove();
+// ul.lastElementChild.remove();
+ul.firstElementChild.textContent = 'Hello';
+ul.children[1].innerText = 'Brad';
+ul.lastElementChild.innerHTML = '<h1>Hello</h1>';
+
+const btn = document.querySelector('.btn');
+btn.style.background = 'red';
+// ==================================
+const btn = document.querySelector(".btn");
+
+btn.addEventListener("mouseout", (e) => {
+  e.preventDefault();
+  // console.log('click');
+  document.querySelector("#my-form").style.background = "#ccc";
+  document.querySelector("body").classList.add("bg-dark");
+  document.querySelector(".items").lastElementChild.innerHTML =
+    "<h1>Hello</h1>";
+});

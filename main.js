@@ -1,13 +1,31 @@
-//function
-function addNums(num1=1, num2=1){
-    // console.log(num1 + num2);
-    return num1 + num2;
-}
-console.log(addNums(5,4));
+const myForm = document.querySelector("#my-form");
+const nameInput = document.querySelector("#name");
+const emailInput = document.querySelector("#email");
+const msg = document.querySelector(".msg");
+const userList = document.querySelector("#users");
 
-//array function
-const addNum = (num1=1, num2=1) =>{
-    console.log(num1 + num2);
-    // return num1 + num2;
+myForm.addEventListener("submit", onSubmit);
+
+function onSubmit(e) {
+  e.preventDefault();
+
+  if (nameInput.value === "" || emailInput.value === "") {
+    // alert('Please enter fields');
+    msg.classList.add("error");
+    msg.innerHTML = "Please enter all fields";
+
+    setTimeout(() => msg.remove(), 3000);
+  } else {
+    // console.log('success');
+    const li = document.createElement("li");
+    li.appendChild(
+      document.createTextNode(`
+        ${nameInput.value} : ${emailInput.value}`));
+    
+    userList.appendChild(li);
+
+    //clear fields
+    nameInput.value ='';
+    emailInput.value ='';
+  }
 }
-console.log(addNum(5,5));
